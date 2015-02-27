@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 /**
  * This is the pipeline main class
+ * b *
+ * c %
+ * f &
+ * d !
+ * o @
+ * m ^
  */
 public class Main {
     static Scanner reader = new Scanner(System.in);
