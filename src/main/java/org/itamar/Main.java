@@ -1,5 +1,7 @@
 package org.itamar;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -32,23 +34,38 @@ public class Main {
     static Scanner reader = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String data;
+        List<String> data;
         do {
             data = readContent();
 
-            // Single stage in out pipeline
-            data = replaceAs(data);
-
-            System.out.print(data);
-            System.out.print("\n");
+            for (String s : data) {
+                s = replaceChar(s, 'b', '*');
+                s = replaceChar(s, 'a', '§');
+                s = replaceChar(s, 'c', '%');
+                s = replaceChar(s, 'd', '!');
+                s = replaceChar(s, 'o', '@');
+                s = replaceChar(s, 'm', '^');
+                System.out.print(s);
+                System.out.print("\n");
+            }
         } while (!data.isEmpty());
     }
 
-    private static String replaceAs(String input) {
-        return input.replace('a', '§');
+    private static String replaceChar(String replacedValue, char s, char d) {
+        return replacedValue.replace(s, d);
     }
 
-    public static String readContent() {
-        return reader.nextLine();
+    public static List<String> readContent() {
+        List<String> arr = new LinkedList<>();
+
+        String next;
+        do {
+            next = reader.nextLine();
+            if (!next.equals("end") && !next.trim().equals("")) {
+                arr.add(next);
+            }
+        } while (!next.equals("end") && !next.trim().equals(""));
+
+        return arr;
     }
 }
